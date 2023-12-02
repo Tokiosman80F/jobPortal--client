@@ -6,7 +6,7 @@ const MainLayout = () => {
   return (
     <>
       <Header></Header>
-      <div className="h-[85vh]">
+      <div className="h-[100%-85vh]">
         <Outlet></Outlet>
       </div>
       <Footer></Footer>
