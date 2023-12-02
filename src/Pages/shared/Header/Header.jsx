@@ -1,15 +1,27 @@
 import { AiOutlineUser } from "react-icons/ai";
 import { Link } from "react-router-dom";
 const Header = () => {
-    const navList=<>
-        <li><Link to="">Home</Link></li>
-        <li><Link to="">Post Job</Link></li>
-        <li><Link to="">My Job</Link></li>
-        <li><Link to="">All Jobs</Link></li>
-        <li><Link to="">About Us</Link></li>
+  const navList = (
+    <>
+      <li>
+        <Link to="">Home</Link>
+      </li>
+      <li>
+        <Link to="">Post Job</Link>
+      </li>
+      <li>
+        <Link to="">My Job</Link>
+      </li>
+      <li>
+        <Link to="">All Jobs</Link>
+      </li>
+      <li>
+        <Link to="">About Us</Link>
+      </li>
     </>
+  );
   return (
-    <div className="navbar ">
+    <div className="navbar container mx-auto ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -28,6 +40,12 @@ const Header = () => {
               />
             </svg>
           </div>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            {navList}
+          </ul>
         </div>
         <a className="btn btn-outline hover:bg-green-500 text-xl">JobPortal</a>
       </div>
@@ -37,7 +55,7 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn bg-green-500 hover:bg-green-600">
+        <a className="btn bg-green-500 hover:bg-green-400 ">
           <AiOutlineUser /> Login
         </a>
       </div>
