@@ -2,3 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+.toggleBtn{
+    @apply  bg-green-500 px-10 py-3  font-bold cursor-pointer
+}
+.formLabel{
+    @apply block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2
+}

@@ -31,12 +31,12 @@ const Categories = () => {
   ];
   return (
     <div className="container mx-auto">
-      <div className="text-center text-5xl font-bold my-10">
+      <div className="text-center md:text-5xl font-bold my-10">
         <h1>Popular Categories</h1>
       </div>
-      <div className="flex justify-between  gap-10 ">
+      <div className="flex md:flex-row flex-col justify-between  gap-10 ">
         {cardInfos.map((card, index) => (
-          <div key={index} className="hover:scale-105 ease-in-out duration-300   card w-1/2 bg-base-300 shadow-xl border border-black">
+          <div key={index} className="md:hover:scale-105 ease-in-out duration-300   card w-1/2 bg-base-300 shadow-xl border border-black">
             <figure>
               <img src={card.image}  className="w-full h-72"/>
             </figure>
