@@ -44,7 +44,7 @@ const LoginPage = () => {
           <p className="text-gray-500 font-bold   ">Or</p>
           <button className="py-3 px-4 border border-gray-400 rounded-md cursor-pointer ease-in-out duration-200 flex items-center bg-black text-white gap-2">Login in Google <FcGoogle /></button>
         </div>
-        <div className="text-gray-700 mt-5">New here ? <Link to="/register" className="underline font-semibold">Register Now</Link> </div>
+        <div className="text-gray-700 mt-5">New here ? <Link to="/register" className="underline font-semibold text-green-600">Register Now</Link> </div>
       </form>
     </div>
   );
