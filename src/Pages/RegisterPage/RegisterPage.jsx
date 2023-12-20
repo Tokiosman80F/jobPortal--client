@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import loginImage from "../../assets/images/login/login.svg";
-import { FcGoogle } from "react-icons/fc";
 const RegisterPage = () => {
   const handleRegister = (e) => {
     e.preventDefault();

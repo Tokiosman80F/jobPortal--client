@@ -6,11 +6,13 @@ import Home from "../../Pages/HomePage/Home";
 import PostJob from "../../Pages/PostJob/PostJob";
 import LoginPage from "../../Pages/LoginPage/LoginPage";
 import RegisterPage from "../../Pages/RegisterPage/RegisterPage";
+import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[
         {
             path:"/",
@@ -30,4 +32,5 @@ export const router = createBrowserRouter([
         }
     ]
   },
+  
 ]);
