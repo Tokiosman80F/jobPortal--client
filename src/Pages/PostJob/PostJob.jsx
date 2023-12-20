@@ -1,10 +1,49 @@
+import { useState } from "react";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
 const PostJob = () => {
+  const options = [
+    { value: "html", label: "Html" },
+    { value: "css", label: "Css" },
+    { value: "javascript", label: "JavaScript" },
+    { value: "python", label: "Python" },
+    { value: "react", label: "React" },
+    { value: "vues", label: "Vues" },
+  ];
+  const handleJobPost = (e) => {
+    e.preventDefault();
+    let form = e.target;
+    const name = form.jobname.value;
+    const email = form.email.value;
+    const salary = form.salary.value;
+    const department = form.department.value;
+    const jobType = form.jobtype.value;
+    const date = form.date.value;
+
+    // const skills=form.skills.value
+    const description = form.description.value;
+    const jobDetail = {
+      name,
+      email,
+      salary,
+      department,
+      jobType,
+      date,
+      description,
+    };
+    console.log(jobDetail);
+    jobDetail.skill=selectedOption
+  };
+  const [selectedOption, setSelectedOption] = useState(null);
   return (
     <div className="bg">
       <div className="  bg-gradient-to-br from-lime-500 via-green-400 to-emerald-500  ">
         <p className="font-semibold text-2xl py-10 ml-10">Post Your Job Here</p>
       </div>
-      <form className="w-full max-w-2xl mx-auto my-10 p-2 bottom-2">
+      <form
+        className="w-full max-w-2xl mx-auto my-10 p-2 bottom-2"
+        onSubmit={handleJobPost}
+      >
         <div className="flex flex-wrap -mx-3 mb-3">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label className="formLabel">Job title</label>
@@ -96,11 +135,14 @@ const PostJob = () => {
         </div>
         <div className="w-full  mb-6 md:mb-0">
           <label className="formLabel">skills</label>
-          <input
+          <Select
+            defaultValue={selectedOption}
+            onChange={setSelectedOption}
+            options={options}
+            isMulti
             className=" w-full bg-gray-200 text-gray-700 border  py-3 px-4   focus:outline-none focus:bg-white"
             required
             type="text"
-
           />
         </div>
         <div className="w-full mb-6 md:mb-0">

@@ -55,9 +55,9 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn bg-green-500 hover:bg-green-400 ">
+        <Link to="/login" className="btn bg-green-500 hover:bg-green-400 ">
           <AiOutlineUser /> Login
-        </a>
+        </Link>
       </div>
     </div>
   );
