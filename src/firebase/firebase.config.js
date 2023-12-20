@@ -4,13 +4,14 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+console.log("enviorment key =>",import.meta.env.APIKEY);
 const firebaseConfig = {
-  apiKey: "AIzaSyBZ5bz4Qhwi-9-uBK6dTIhHJijBKSI_Vew",
-  authDomain: "jobportal-60b73.firebaseapp.com",
-  projectId: "jobportal-60b73",
-  storageBucket: "jobportal-60b73.appspot.com",
-  messagingSenderId: "763168972636",
-  appId: "1:763168972636:web:2f220c2150e69a1a206b99"
+  apiKey: import.meta.env.APIKEY,
+  authDomain: import.meta.env.AUTHDOMAIN,
+  projectId: import.meta.env.PROJECTID,
+  storageBucket: import.meta.env.STORAGEBUCKET,
+  messagingSenderId: import.meta.env.MESSAGINGSENDERID,
+  appId: import.meta.env.APPID,
 };
 
 // Initialize Firebase
