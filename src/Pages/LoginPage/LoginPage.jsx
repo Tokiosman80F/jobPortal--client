@@ -1,14 +1,33 @@
 import { Link } from "react-router-dom";
 import loginImage from "../../assets/images/login/login.svg";
 import { FcGoogle } from "react-icons/fc";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 const LoginPage = () => {
+  const { loginUser } = useContext(AuthContext);
   const handleLogin = (e) => {
-    e.preventDefault()
-    const form= e.target
-    const email=form.email.value
-    const password=form.password.value
-    const loginInfo={email,password}
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const loginInfo = { email, password };
     console.log(loginInfo);
+
+    loginUser(email, password)
+      .then((userCredential) => {
+        console.log(userCredential.user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Login Successful",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
   return (
     <div className="flex justify-center items-center">
@@ -42,9 +61,19 @@ const LoginPage = () => {
             className="bg-green-400  py-3 px-4  font-bold border border-gray-400 rounded-md cursor-pointer ease-in-out duration-200  hover:bg-green-500"
           />
           <p className="text-gray-500 font-bold   ">Or</p>
-          <button className="py-3 px-4 border border-gray-400 rounded-md cursor-pointer ease-in-out duration-200 flex items-center bg-black text-white gap-2">Login in Google <FcGoogle /></button>
+          <button className="py-3 px-4 border border-gray-400 rounded-md cursor-pointer ease-in-out duration-200 flex items-center bg-black text-white gap-2">
+            Login in Google <FcGoogle />
+          </button>
         </div>
-        <div className="text-gray-700 mt-5">New here ? <Link to="/register" className="underline font-semibold text-green-600">Register Now</Link> </div>
+        <div className="text-gray-700 mt-5">
+          New here ?{" "}
+          <Link
+            to="/register"
+            className="underline font-semibold text-green-600"
+          >
+            Register Now
+          </Link>{" "}
+        </div>
       </form>
     </div>
   );

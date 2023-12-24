@@ -2,11 +2,21 @@ import { useContext } from "react";
 import { AiOutlineUser } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 const Header = () => {
   const { user, logoutUser } = useContext(AuthContext);
   const handleLogout = () => {
     logoutUser()
-      .then(() => console.log("sign out successfully"))
+      .then(() => {
+        console.log("sign out successfully");
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Logout Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
       .catch((error) => console.log(error));
   };
   // console.log(user.email);
@@ -69,12 +79,14 @@ const Header = () => {
             <button className="bg-gray-600 text-white p-2 rounded-2xl">
               {user?.email}
             </button>
-            <Link onClick={handleLogout} className="btn bg-green-500 hover:bg-green-400 ">
+            <Link
+              onClick={handleLogout}
+              className="btn bg-green-500 hover:bg-green-400 "
+            >
               <AiOutlineUser /> Logout
             </Link>
           </>
         ) : (
-        
           <Link to="/login" className="btn bg-green-500 hover:bg-green-400 ">
             <AiOutlineUser /> Login
           </Link>
