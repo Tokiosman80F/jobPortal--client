@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Select from "react-select";
-import makeAnimated from "react-select/animated";
+
+import { AuthContext } from "../../Provider/AuthProvider";
 const PostJob = () => {
+  const {user}=useContext(AuthContext)
+  console.log(user?.email);
   const options = [
     { value: "html", label: "Html" },
     { value: "css", label: "Css" },
@@ -14,7 +17,7 @@ const PostJob = () => {
     e.preventDefault();
     let form = e.target;
     const name = form.jobname.value;
-    const email = form.email.value;
+    let email = user?.email;
     const salary = form.salary.value;
     const department = form.department.value;
     const jobType = form.jobtype.value;
@@ -71,7 +74,7 @@ const PostJob = () => {
             className=" w-full bg-gray-200 text-gray-700 border  py-3 px-4   focus:outline-none focus:bg-white"
             required
             type="email"
-            name="email"
+            defaultValue={user?.email}
           />
         </div>
 
