@@ -1,12 +1,27 @@
 import { Link } from "react-router-dom";
 import loginImage from "../../assets/images/login/login.svg";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 const RegisterPage = () => {
+  const { createUser } = useContext(AuthContext);
   const handleRegister = (e) => {
     e.preventDefault();
+
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     const loginInfo = { email, password };
+
+    // ----firebase
+    createUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log("Error Message =>", error.message);
+      });
+
     console.log(loginInfo);
   };
   return (
