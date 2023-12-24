@@ -2,24 +2,45 @@ import { Link } from "react-router-dom";
 import loginImage from "../../assets/images/login/login.svg";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
+
 const RegisterPage = () => {
   const { createUser } = useContext(AuthContext);
   const handleRegister = (e) => {
     e.preventDefault();
 
     const form = e.target;
+    const userName=form.name.value
     const email = form.email.value;
     const password = form.password.value;
-    const loginInfo = { email, password };
+    const loginInfo = { userName,email, password };
 
     // ----firebase
     createUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        // sweet alert modal
+        if(user) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Successfully Register",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
         console.log(user);
       })
       .catch((error) => {
+        console.log("Main error",error);
         console.log("Error Message =>", error.message);
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: error.code,
+          showConfirmButton: false,
+          timer: 2500
+        });
       });
 
     console.log(loginInfo);
@@ -38,8 +59,8 @@ const RegisterPage = () => {
           <input
             className=" w-full bg-gray-200 text-gray-700 border  py-3 px-4   focus:outline-none focus:bg-white"
             required
-            type="email"
-            name="email"
+            type="text"
+            name="name"
           />
         </div>
         <div className="w-full mb-6 md:mb-3">
