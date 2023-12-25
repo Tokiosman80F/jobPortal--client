@@ -3,8 +3,8 @@ import Select from "react-select";
 
 import { AuthContext } from "../../Provider/AuthProvider";
 const PostJob = () => {
-  const {user}=useContext(AuthContext)
-  console.log(user?.email);
+  const { user } = useContext(AuthContext);
+  const [selectedOption, setSelectedOption] = useState(null);
   const options = [
     { value: "html", label: "Html" },
     { value: "css", label: "Css" },
@@ -16,7 +16,7 @@ const PostJob = () => {
   const handleJobPost = (e) => {
     e.preventDefault();
     let form = e.target;
-    const name = form.jobname.value;
+    const title = form.jobname.value;
     let email = user?.email;
     const salary = form.salary.value;
     const department = form.department.value;
@@ -26,7 +26,7 @@ const PostJob = () => {
     // const skills=form.skills.value
     const description = form.description.value;
     const jobDetail = {
-      name,
+      title,
       email,
       salary,
       department,
@@ -35,9 +35,19 @@ const PostJob = () => {
       description,
     };
     console.log(jobDetail);
-    jobDetail.skill=selectedOption
+    jobDetail.skill = selectedOption;
+
+    fetch(`http://localhost:3000/postJob`, {
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(jobDetail)
+    })
+      .then((res) => res.json())
+      .then((result) => console.log(result));
   };
-  const [selectedOption, setSelectedOption] = useState(null);
+
   return (
     <div className="bg">
       <div className="  bg-gradient-to-br from-lime-500 via-green-400 to-emerald-500  ">
