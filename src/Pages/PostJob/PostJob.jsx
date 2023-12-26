@@ -49,7 +49,7 @@ const PostJob = () => {
   };
 
   return (
-    <div className="bg">
+    <div >
       <div className="  bg-gradient-to-br from-lime-500 via-green-400 to-emerald-500  ">
         <p className="font-semibold text-2xl py-10 ml-10">Post Your Job Here</p>
       </div>

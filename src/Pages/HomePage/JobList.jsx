@@ -1,4 +1,5 @@
 import  { useEffect, useState } from "react";
+import Card from "../shared/Card/Card";
 
 const JobList = () => {
   const [activeTab, setActiveTab] = useState("remote");
@@ -46,21 +47,7 @@ const JobList = () => {
     {/* job Card  */}
       <div className="grid grid-cols-3 gap-5 mt-5">
         {jobCollections.map((jobCollection) => (
-          <div
-            className="card w-96 bg-primary text-primary-content"
-            key={jobCollection._id}
-          >
-            <div className="card-body">
-              <h2 className="card-title">{jobCollection.title}</h2>
-              <p>Salary: {jobCollection.salary}</p>
-              <p>Job-Type: {jobCollection.jobType}</p>
-              <p>DateLine:{jobCollection.date}</p>
-              <div className="card-actions justify-end">
-                <button className="btn">View Detail</button>
-                <button className="btn">Apply Now</button>
-              </div>
-            </div>
-          </div>
+          <Card key={jobCollection._id} data={jobCollection}></Card>
         ))}
       </div>
     </div>
