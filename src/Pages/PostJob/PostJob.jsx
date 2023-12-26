@@ -120,8 +120,8 @@ const PostJob = () => {
                 required
                 name="jobtype"
               >
-                <option>Remote</option>
-                <option>On-site</option>
+                <option value='remote'>Remote</option>
+                <option value='onsite'>On-site</option>
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg
