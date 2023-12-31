@@ -5,6 +5,12 @@ import { AuthContext } from "../../Provider/AuthProvider";
 const PostJob = () => {
   const { user } = useContext(AuthContext);
   const [selectedOption, setSelectedOption] = useState(null);
+ let skillSet=[]
+  if(selectedOption && selectedOption.length>=1)
+   {
+     skillSet=selectedOption.map((option)=>(option.label)) 
+   } 
+   console.log(skillSet);
   const options = [
     { value: "html", label: "Html" },
     { value: "css", label: "Css" },
@@ -23,7 +29,6 @@ const PostJob = () => {
     const jobType = form.jobtype.value;
     const date = form.date.value;
 
-    // const skills=form.skills.value
     const description = form.description.value;
     const jobDetail = {
       title,
@@ -35,7 +40,7 @@ const PostJob = () => {
       description,
     };
     console.log(jobDetail);
-    jobDetail.skill = selectedOption;
+    jobDetail.skills = skillSet;
 
     fetch(`http://localhost:3000/postJob`, {
       method:"POST",

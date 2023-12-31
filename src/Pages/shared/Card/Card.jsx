@@ -9,7 +9,7 @@ const Card = ({ data }) => {
         <div className="card-actions justify-end">
           <button
             className="btn"
-            onClick={() => document.getElementById("my_modal_1").showModal()}
+            onClick={() => document.getElementById(`my_modal_${data._id}`).showModal()}
           >
             View Detail
           </button>
@@ -18,15 +18,18 @@ const Card = ({ data }) => {
       </div>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
 
-      <dialog id="my_modal_1" className="modal text-black" >
+      <dialog id={`my_modal_${data._id}`} className="modal text-black">
         <div className="modal-box w-11/12 max-w-5xl">
           <h3 className="font-bold text-lg">{data.title}</h3>
-          <p className="py-4">
-            {data.description}
-          </p>
-          <p>{data.skills}</p>
-          <p></p>
-          <p></p>
+          <p className="py-4">{data.description}</p>
+          {/* <ul className="flex">
+            Skills:{data.skills.map((skill,index)=><li key={index} className="li" >{skill}</li>)}
+          </ul> */}
+          <p>Skill: {data.skills.join(",")}</p>
+          <p>Department:{data.department}</p>
+          <p>Job Type:{data.jobType}</p>
+          <p>DeadLine:{data.date}</p>
+          <p>Salary:{data.salary}</p>
           <div className="modal-action">
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}

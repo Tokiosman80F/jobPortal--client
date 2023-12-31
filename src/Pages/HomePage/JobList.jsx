@@ -5,7 +5,7 @@ const JobList = () => {
   const [activeTab, setActiveTab] = useState("remote");
   const [jobCollections, setJobCollections] = useState([]);
 
- 
+  
 
   const handleToggle = (btn) => {
     setActiveTab(btn);
@@ -18,9 +18,10 @@ const JobList = () => {
         const result=data?.filter(job=>job.jobType===activeTab)
         console.log("result =>",result);
         setJobCollections(result);
-      });
+      }).catch(error=>{console.log("Error fetching data",error)});
   }, [activeTab]);
 
+  console.log("Job Collections ",jobCollections);
   
   return (
     <div className="container mx-auto my-10">
