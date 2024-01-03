@@ -29,7 +29,7 @@ const Header = () => {
         <Link to="/postJob">Post Job</Link>
       </li>
       <li>
-        <Link to="">My Job</Link>
+        <Link to="/my-job">My Job</Link>
       </li>
       <li>
         <Link to="/all-job">All Jobs</Link>

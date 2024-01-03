@@ -8,6 +8,8 @@ import LoginPage from "../../Pages/LoginPage/LoginPage";
 import RegisterPage from "../../Pages/RegisterPage/RegisterPage";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Alljob from "../../Pages/AllJobs/Alljob";
+import MyJob from "../../Pages/MyJob/MyJob";
+
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +36,10 @@ export const router = createBrowserRouter([
         {
           path:'/all-job',
           element:<Alljob></Alljob>
+        },
+        {
+          path:'/my-job',
+          element:<MyJob></MyJob>
         }
     ]
   },
