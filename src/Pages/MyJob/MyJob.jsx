@@ -6,12 +6,21 @@ import { MdDeleteForever } from "react-icons/md";
 const MyJob = () => {
   const { user } = useContext(AuthContext);
   const [myjobs, setMyjob] = useState([]);
+  const [searchText, setSearchText] = useState("");
   useEffect(() => {
     fetch(`http://localhost:3000/myjob/${user?.email}`)
       .then((response) => response.json())
       .then((data) => setMyjob(data))
       .catch((error) => console.error(error));
   }, [user?.email]);
+
+  const handleSearch = () => {
+    console.log("clicked");
+    fetch(`http://localhost:3000/jobSearching/${searchText}`)
+      .then((response) => response.json())
+      .then((data) => setMyjob(data))
+      .catch(error=>console.error(error));
+  };
   return (
     <div>
       <div className="overflow-x-auto">
@@ -32,8 +41,12 @@ table
           <input
             type="text"
             className="border-2 border-gray-500 rounded-md px-2 py-1"
+            onChange={(e) => setSearchText(e.target.value)}
           />
-          <button className="bg-green-500 px-6 py-2 rounded-md text-white">
+          <button
+            onClick={handleSearch}
+            className="bg-green-500 px-6 py-2 rounded-md text-white"
+          >
             Search
           </button>
         </div>
@@ -53,7 +66,7 @@ table
           </thead>
           <tbody>
             {myjobs.map((myjob, index) => (
-              <tr key={myjob._id} >
+              <tr key={myjob._id}>
                 <th>{index + 1}</th>
                 <td>{myjob.title}</td>
                 <td>{myjob.department}</td>
